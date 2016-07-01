@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+ATG-Product: Simple
+ATG-Version: 11.2
+ATG-Config-Path: config/
+ATG-Version-Full: 11.2
+ATG-Class-Path: bin/ resources/
+ATG-Required: DAS DPS DSS DCS DafEar.Admin
+ATG-Product-Full: Simple Application
+

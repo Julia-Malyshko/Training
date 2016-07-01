@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template
+	PUBLIC "-//Art Technology Group, Inc.//DTD Dynamo Security//EN"
+	"http://www.atg.com/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+	<header>
+		<name>Feline Repository</name>
+		<author>Julia Malyshko</author>
+	</header>
+
+	<item-descriptor name="feline" default="true">
+		<table name="ATGTR_FELINE" type="primary" id-column-name="feline_id">
+			<property name="felineId" column-name="feline_id" data-type="String" />
+			<property name="felineName" column-name="feline_name"
+				data-type="String" required="true" />
+		</table>
+		<table name="ATGTR_FELINE_CAT" type="multi" id-column-name="feline_id">
+			<property name="cats" column-name="cat_id" data-type="set"
+				component-item-type="cat" repository="/custom/Cat" />
+		</table>
+	</item-descriptor>
+</gsa-template>
+

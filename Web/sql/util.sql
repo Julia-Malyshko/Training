@@ -1,0 +1,4 @@
+SELECT 'DROP TABLE '  || TNAME || ';'
+FROM tab
+WHERE TNAME LIKE 'ATGTR%'
+

@@ -1,0 +1,8 @@
+<%-- Global prelude fragment for this web application. --%>
+
+<%@ taglib prefix="c"       uri="http://java.sun.com/jsp/jstl/core"              %>
+<%@ taglib prefix="fmt"     uri="http://java.sun.com/jsp/jstl/fmt"               %>
+<%@ taglib prefix="fn"      uri="http://java.sun.com/jsp/jstl/functions"         %>
+<%@ taglib prefix="dsp"     uri="http://www.atg.com/taglibs/daf/dspjspTaglib1_0" %>
+<%@ taglib prefix="json"    uri="http://www.atg.com/taglibs/json" %>
+<%-- @version $Id: //product/BCC/version/11.1/src/j2ee-apps/ControlCenter.ear/ControlCenter.war/WEB-INF/jspf/prelude.jspf#2 $$Change: 878941 $--%>

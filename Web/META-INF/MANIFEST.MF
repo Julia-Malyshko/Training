@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+ATG-Product: WebStore
+ATG-Version: 11.2
+ATG-Config-Path: config/
+ATG-Version-Full: 11.2
+ATG-Class-Path: bin/ resources/
+ATG-Required: MyProject.Simple 
+ATG-Product-Full: WebStore Application
+ATG-J2EE: j2ee-apps/webstore
+ATG-EAR-Module: j2ee-apps/webstore
+
