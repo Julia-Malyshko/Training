@@ -14,7 +14,8 @@ import atg.servlet.DynamoHttpServletResponse;
 import atg.servlet.DynamoServlet;
 
 public class PrintAllItems extends DynamoServlet {
-	private String ITEM_DESCRIPTOR;
+	private String itemDescriptor;
+
 	private Repository repository;
 
 	// input parameters
@@ -29,12 +30,12 @@ public class PrintAllItems extends DynamoServlet {
 	private static final String OPARAM_ERROR = "error";
 	private static final String OPARAM_EMPTY = "empty";
 
-	public String getITEM_DESCRIPTOR() {
-		return ITEM_DESCRIPTOR;
+	public String getItemDescriptor() {
+		return itemDescriptor;
 	}
 
-	public void setITEM_DESCRIPTOR(String iTEM_DESCRIPTOR) {
-		ITEM_DESCRIPTOR = iTEM_DESCRIPTOR;
+	public void setItemDescriptor(String itemDescriptor) {
+		this.itemDescriptor = itemDescriptor;
 	}
 
 	public void setRepository(Repository repository) {
@@ -42,7 +43,7 @@ public class PrintAllItems extends DynamoServlet {
 	}
 
 	protected RepositoryItem[] searchItems() throws RepositoryException {
-		RepositoryView view = repository.getView(ITEM_DESCRIPTOR);
+		RepositoryView view = repository.getView(itemDescriptor);
 		RqlStatement statement = RqlStatement.parseRqlStatement("ALL");
 		Object params[] = null;
 		RepositoryItem[] items = statement.executeQuery(view, params);
@@ -68,18 +69,17 @@ public class PrintAllItems extends DynamoServlet {
 	public void service(DynamoHttpServletRequest request, DynamoHttpServletResponse response)
 			throws ServletException, IOException {
 
-		
-			try {
-				RepositoryItem[] items = searchItems();
-				if (items == null) {
-					printEmptyMessage(request, response);
-				} else {
-					printItemList(request, response, items);
-				}
-			} catch (RepositoryException exc) {
-				logDebug(exc.getMessage());
-				request.setParameter(ERROR_MESSAGE, "Some errors");
-				request.serviceLocalParameter(OPARAM_ERROR, request, response);
+		try {
+			RepositoryItem[] items = searchItems();
+			if (items == null) {
+				printEmptyMessage(request, response);
+			} else {
+				printItemList(request, response, items);
 			}
+		} catch (RepositoryException exc) {
+			logDebug(exc.getMessage());
+			request.setParameter(ERROR_MESSAGE, "Some errors");
+			request.serviceLocalParameter(OPARAM_ERROR, request, response);
+		}
 	}
 }

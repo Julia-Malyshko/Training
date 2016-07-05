@@ -6,10 +6,10 @@
 	<body>
 		<dsp:droplet name="/droplet/PrintAllCats">
 			<dsp:oparam name="startOutput">
-				Were found <dsp:valueof param="numItems" /> books:
+				There are <dsp:valueof param="numItems" /> cats:
 			</dsp:oparam>
 			<dsp:oparam name="output">
-				<li><dsp:a href="">
+				<li><dsp:a href="/training/update-cat.jsp">
 						<dsp:param name="id" param="item.catId" />
 						<dsp:valueof param="item.catName" />
 					</dsp:a>

@@ -4,7 +4,6 @@
 <title>Update cat</title>
 	</head>
 	<body>
-		<dsp:param name="id" value="200003" />
 		<dsp:droplet name="/droplet/CatLookup">
 			<dsp:param name="catId" param="id" />
 			<dsp:setvalue param="cat" paramvalue="element" />
@@ -13,12 +12,14 @@
 				<dsp:getvalueof var="breed" param="cat.breed" />
 				<dsp:getvalueof var="pedigree" param="cat.pedigreeNumber" />
 				<dsp:getvalueof var="showList" param="cat.showList" />
+				<dsp:getvalueof var="vaccinations" param="cat.vaccinations" />
 				<dsp:getvalueof var="id" param="cat.catId" />
 			</dsp:oparam>
 		</dsp:droplet>
 		<p>${catName}
+		<p>${pedigree}
 		<p>
-		<p>${showList[0]}
+
 			<dsp:droplet name="/atg/dynamo/droplet/ForEach">
 				<dsp:param name="array" value="${showList}" />
 				<dsp:setvalue param="show" paramvalue="element" />
@@ -33,8 +34,9 @@
 
 				<dsp:oparam name="output">
 
-					Show # <dsp:valueof param="count" /> :
+					<li>Show # <dsp:valueof param="count" /> :
 					<dsp:valueof param="show.showName" /><br>
+					</li>
 
 				</dsp:oparam>
 

@@ -22,9 +22,10 @@
 				component-item-type="prize" repository="/custom/Prize" />
 		</table>
 
-		<table name="ATGTR_CAT_SHOW" type="multi" id-column-name="show_id">
-			<property name="cats" column-names="cat_id,seq_num"
-				data-type="set" component-item-type="cat" repository="/custom/Cat" />
+		<table name="ATGTR_CAT_SHOW" type="multi" id-column-name="show_id"
+			multi-column-name="seq_num">
+			<property name="cats" column-name="cat_id" data-type="list"
+				component-item-type="cat" repository="/custom/Cat" />
 		</table>
 
 	</item-descriptor>

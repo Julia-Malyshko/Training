@@ -10,6 +10,7 @@
 
 	<item-descriptor name="cat" default="true"
 		sub-type-property="breed" sub-type-value="common_cat">
+
 		<table name="ATGTR_CAT" type="primary" id-column-name="cat_id">
 			<property name="catId" column-name="cat_id" data-type="String" />
 			<property name="catName" column-name="cat_name" data-type="String"
@@ -32,13 +33,12 @@
 				data-type="map" component-item-type="vaccination" repository="/custom/Vaccination" />
 		</table>
 
-		<table name="ATGTR_CAT_SHOW" type="multi" id-column-name="cat_id"
-			multi-column-name="seq_num">
-			<property name="showList" column-name="show_id" data-type="list"
-				component-item-type="show" repository="/custom/Show" />
+		<table name="ATGTR_CAT_SHOW" type="multi" id-column-name="cat_id">
+			<property name="showList" column-names="show_id,seq_num"
+				data-type="set" component-item-type="show" repository="/custom/Show" />
 		</table>
-
 	</item-descriptor>
+
 
 	<item-descriptor name="persian" super-type="cat"
 		sub-type-value="persian_cat">
