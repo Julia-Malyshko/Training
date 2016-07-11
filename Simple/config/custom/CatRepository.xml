@@ -37,6 +37,21 @@
 			<property name="showList" column-names="show_id,seq_num"
 				data-type="set" component-item-type="show" repository="/custom/Show" />
 		</table>
+
+		<property name="nextShows" data-type="set"
+			component-item-type="show" repository="/custom/Show">
+			<derivation user-method="atg.repository.dp.SelectFollowing">
+				<expression>showList</expression>
+			</derivation>
+			<attribute name="sortProperty" value="showDate" data-type="String" />
+		</property>
+
+		<property name="prettyPrintCat" data-type="String">
+			<derivation user-method="atg.repository.dp.PrettyPrint">
+				<expression>catName</expression>
+				<expression>pedigreeNumber</expression>
+			</derivation>
+		</property>
 	</item-descriptor>
 
 

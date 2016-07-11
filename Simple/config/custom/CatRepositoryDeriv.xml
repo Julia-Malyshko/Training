@@ -27,12 +27,20 @@
 			<property name="pedigreeNumber" column-name="pedigree_number"
 				data-type="String" />
 		</table>
-		<!-- <property name="derivedPropertyCat">
+		<property name="derivedPropertyCat" data-type="String">
 			<derivation>
 				<expression>catName</expression>
+				<expression>pedigreeNumber</expression>
 			</derivation>
-		</property> -->
+		</property>
 
+		<!-- <property data-type="list" component-data-type="string" name="derivedCat">
+			<derivation method="union">
+				<expression>cats</expression>
+				<expression>cats</expression>
+			</derivation>
+		</property>
+ -->
 	</item-descriptor>
 
 
