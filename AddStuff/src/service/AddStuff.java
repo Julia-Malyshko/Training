@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
@@ -68,22 +69,6 @@ public class AddStuff extends GenericService implements IConstants {
 		profileRepository.removeItem(pUser.getRepositoryId(), USER_ITEM_DESC);
 	}
 
-	// protected List<RepositoryItem> getAllSkusInCatalog() throws
-	// RepositoryException {
-	// final List<RepositoryItem> result = new LinkedList<RepositoryItem>();
-	// final Repository catalog = getCatalogTools().getCatalog();
-	//
-	// final RepositoryView view = catalog.getView(SKU_ITEM_DESC);
-	// final RqlStatement statement = RqlStatement.parseRqlStatement("ALL");
-	// final Object params[] = null;
-	// final RepositoryItem[] resultQuery = statement.executeQuery(view,
-	// params);
-	// for (RepositoryItem item : resultQuery) {
-	// result.add(item);
-	// }
-	// return result;
-	// }
-
 	protected RepositoryItem findCategory(final String pCategoryId) throws RepositoryException {
 		final RepositoryItem category;
 		final Repository catalog = getCatalogTools().getCatalog();
@@ -129,36 +114,6 @@ public class AddStuff extends GenericService implements IConstants {
 		}
 		return result;
 	}
-
-	// @SuppressWarnings("unchecked")
-	// protected List<CommerceItem> getRandomCommerceItems(final
-	// List<RepositoryItem> pSKUs) throws CommerceException {
-	// final List<CommerceItem> commerceItems;
-	// final Random rand = new Random();
-	// final double probability = 0.5;
-	// if (pSKUs == null) {
-	// commerceItems = null;
-	// } else {
-	// commerceItems = new LinkedList<CommerceItem>();
-	// for (RepositoryItem sku : pSKUs) {
-	// if (rand.nextDouble() > probability) {
-	// String skuId = sku.getRepositoryId();
-	// Set<Object> parentProducts = (Set<Object>)
-	// sku.getPropertyValue(SKU_PARENT_PRODUCTS);
-	// for (Object parentProduct : parentProducts) {
-	// String productId = ((RepositoryItem) parentProduct).getRepositoryId();
-	// long quantity = RandomUtils.randomUniform(getMaxQuantity(),
-	// getMinQuantity());
-	// CommerceItem commerceSKU =
-	// getCommerceItemManager().createCommerceItem(skuId, productId,
-	// quantity);
-	// commerceItems.add(commerceSKU);
-	// }
-	// }
-	// }
-	// }
-	// return commerceItems;
-	// }
 
 	protected List<CommerceItem> getRandomCommerceItemsByProduct(final List<RepositoryItem> pProductSKUs,
 			final String pProductId) throws CommerceException {
@@ -424,5 +379,43 @@ public class AddStuff extends GenericService implements IConstants {
 	public final void setMinQuantity(int pMinQuantity) {
 		mMinQuantity = pMinQuantity;
 	}
+	
+//	protected List<RepositoryItem> getAllSkusInCatalog() throws RepositoryException {
+//	final List<RepositoryItem> result = new LinkedList<RepositoryItem>();
+//	final Repository catalog = getCatalogTools().getCatalog();
+//
+//	final RepositoryView view = catalog.getView(SKU_ITEM_DESC);
+//	final RqlStatement statement = RqlStatement.parseRqlStatement("ALL");
+//	final Object params[] = null;
+//	final RepositoryItem[] resultQuery = statement.executeQuery(view, params);
+//	for (RepositoryItem item : resultQuery) {
+//		result.add(item);
+//	}
+//	return result;
+//}
+	
+//	@SuppressWarnings("unchecked")
+//	protected List<CommerceItem> getRandomCommerceItems(final List<RepositoryItem> pSKUs) throws CommerceException {
+//		final List<CommerceItem> commerceItems;
+//		if (pSKUs == null) {
+//			commerceItems = null;
+//		} else {
+//			commerceItems = new LinkedList<CommerceItem>();
+//			for (RepositoryItem sku : pSKUs) {
+//				if (RandomUtils.random.nextDouble() > PROBABILITY_ADD_SKU) {
+//					String skuId = sku.getRepositoryId();
+//					Set<Object> parentProducts = (Set<Object>) sku.getPropertyValue(SKU_PARENT_PRODUCTS);
+//					for (Object parentProduct : parentProducts) {
+//						String productId = ((RepositoryItem) parentProduct).getRepositoryId();
+//						long quantity = RandomUtils.randomUniform(getMaxQuantity(), getMinQuantity());
+//						CommerceItem commerceSKU = getCommerceItemManager().createCommerceItem(skuId, productId,
+//								quantity);
+//						commerceItems.add(commerceSKU);
+//					}
+//				}
+//			}
+//		}
+//		return commerceItems;
+//	}
 
 }
