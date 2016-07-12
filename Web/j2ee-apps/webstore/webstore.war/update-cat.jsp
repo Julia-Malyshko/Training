@@ -1,7 +1,7 @@
 <dsp:page>
 	<dsp:importbean bean="/custom/Cat" />
 	<head>
-<title>Update cat</title>
+<title>update-cat</title>
 	</head>
 	<body>
 		<dsp:droplet name="/droplet/CatLookup">
