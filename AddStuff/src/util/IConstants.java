@@ -15,4 +15,8 @@ public interface IConstants {
 	static final String PRODUCT_CHILD_SKUS = "childSKUs";
 	
 	static final double PROBABILITY_ADD_SKU = 0.5;
+	
+	static final String CSV_FILE = ".csv";
+	static final String TXT_FILE = ".txt";
+	static final String NEW_LINE = "\n";
 }

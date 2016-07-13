@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template
+	PUBLIC "-//Art Technology Group, Inc.//DTD Dynamo Security//EN"
+	"http://www.atg.com/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+	<header>
+		<name>Show Repository</name>
+		<author>Julia Malyshko</author>
+	</header>
+
+	<item-descriptor name="show" default="true">
+		<table name="ATGTR_SHOW" type="primary" id-column-name="show_id">
+			<property name="showId" column-name="show_id" data-type="String" />
+			<property name="showName" column-name="show_name" data-type="String"
+				required="true" />
+			<property name="showDate" column-name="show_date" data-type="Date" />
+		</table>
+
+		<table name="ATGTR_SHOW_PRIZE" type="multi" id-column-name="show_id"
+			multi-column-name="seq_num">
+			<property name="prizes" column-name="prize_id" data-type="list"
+				component-item-type="prize" repository="/custom/Prize" />
+		</table>
+
+		<table name="ATGTR_CAT_SHOW" type="multi" id-column-name="show_id"
+			multi-column-name="seq_num">
+			<property name="cats" column-name="cat_id" data-type="list"
+				component-item-type="cat" repository="/custom/Cat" />
+		</table>
+
+	</item-descriptor>
+</gsa-template>
+

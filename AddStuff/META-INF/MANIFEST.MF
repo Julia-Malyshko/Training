@@ -3,7 +3,7 @@ ATG-Product: AddStuff
 ATG-Version: 11.2
 ATG-Config-Path: config/
 ATG-Version-Full: 11.2
-ATG-Class-Path: bin/ resources/
+ATG-Class-Path: bin/ lib/opencsv-3.8.jar
 ATG-Required: DAS DPS DSS DCS DafEar.Admin
 ATG-Product-Full: Add profiles with orders
 
