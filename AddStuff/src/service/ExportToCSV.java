@@ -158,49 +158,6 @@ public class ExportToCSV extends GenericService implements IConstants {
 		return valid;
 	}
 	
-/*	//TODO to utils
-	
-//	protected FileWriter getFileWriter(final File pFile) throws IOException {
-//		final FileWriter fw;
-//		fw = new FileWriter(pFile);
-//		return fw;
-//	}
-//
-//	protected void readCSVToTXT(final String filename) throws IOException {
-//		final String filePath = getFilePath() + filename + CSV_FILE;
-//		final CSVReader reader = new CSVReader(new FileReader(filePath));
-//		final String path = getFilePath() + filename + TXT_FILE;
-//		final File readData = new File(path);
-//		final FileWriter fw = getFileWriter(readData);
-//		String[] row;
-//		StringBuffer sb;
-//		while ((row = reader.readNext()) != null) {
-//			sb = new StringBuffer();
-//			for (String element : row) {
-//				sb.append(element + ";\t");
-//			}
-//			sb.append("\n");
-//			fw.write(sb.toString());
-//		}
-//		reader.close();
-//		fw.flush();
-//		fw.close();
-//	}
-//
-//	protected void writeData(final List<String[]> pData, final String filename) throws IOException {
-//		final String path = getFilePath() + filename + CSV_FILE;
-//		final File file = new File(path);
-//		final FileWriter fw = getFileWriter(file);
-//		final CSVWriter writer = new CSVWriter(fw);
-//		writer.writeNext(CommonUtils.getListAsArray(getColumnNames()));
-//		writer.writeAll(pData);
-//		writer.close();
-//		// TODO to check data
-//		readCSVToTXT(filename);
-//
-//	}
-*/	
-	
 	protected String generateFileName(final int startIndex, final int toIndex){
 		final String filename;
 		filename = getItemDescriptorName() + (startIndex + 1) + "-" + toIndex;
