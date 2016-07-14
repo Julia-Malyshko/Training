@@ -18,6 +18,7 @@ public class CSVUtils implements IConstants {
 		return fw;
 	}
 
+	//TODO develop only
 	public static void readCSVToTXT(final String file) throws IOException {
 		final CSVReader reader = new CSVReader(new FileReader(file));
 		final String path = file.replace(CSV_FILE, TXT_FILE);
@@ -46,8 +47,6 @@ public class CSVUtils implements IConstants {
 		writer.writeNext(columns);
 		writer.writeAll(pData);
 		writer.close();
-		// TODO to check data
-		readCSVToTXT(wholeFilePath);
 	}
 
 	public static String getPropDelimiter() {

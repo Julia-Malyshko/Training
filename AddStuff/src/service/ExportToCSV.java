@@ -45,7 +45,7 @@ public class ExportToCSV extends GenericService implements IConstants {
 	protected RepositoryItem[] getALLItems() throws RepositoryException {
 		final RepositoryItem[] resultQuery;
 		final RepositoryView view = getRepository().getView(getItemDescriptor());
-		final RqlStatement statement = RqlStatement.parseRqlStatement("prettyPrintCat = 'pretty cat | catName: Afina | pedigreeNumber: 20'");
+		final RqlStatement statement = RqlStatement.parseRqlStatement("ALL");
 		final Object params[] = null;
 		resultQuery = statement.executeQuery(view, params);
 		return resultQuery;
@@ -96,6 +96,7 @@ public class ExportToCSV extends GenericService implements IConstants {
 				} else {
 					sb.append(value);
 				}
+				sb.append(getDelimeterCollection());
 			}
 			mapValue = sb.replace(sb.length() - getDelimeterCollection().length(), sb.length(), "]").toString();
 		}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE gsa-template
+	PUBLIC "-//Art Technology Group, Inc.//DTD Dynamo Security//EN"
+	"http://www.atg.com/dtds/gsa/gsa_1.0.dtd">
+<gsa-template>
+	<header>
+		<name>Test Repository</name>
+		<author>Julia Malyshko</author>
+	</header>
+
+	<item-descriptor name="test" default="true">
+		<table name="test_user" type="primary" id-column-name="user_id">
+			<property name="userId" column-name="user_id" data-type="String" />
+			<property name="userName" column-name="user_name" data-type="String" />
+		</table>
+
+		<table name="test_user_list_urls" type="multi" id-column-name="user_id"
+			multi-column-name="seq_num">
+			<property name="urls" column-name="url_value" data-type="list"
+				component-data-type="String" />
+		</table>
+
+		<table name="test_user_map_urls" type="multi" id-column-name="user_id"
+			multi-column-name="url_key">
+			<property name="mapUrls" column-name="url_value" data-type="map"
+				component-data-type="String" />
+		</table>
+
+	</item-descriptor>
+</gsa-template>
+
