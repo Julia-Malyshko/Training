@@ -19,9 +19,9 @@ public class CSVUtils implements IConstants {
 	}
 
 	//TODO develop only
-	public static void readCSVToTXT(final String file) throws IOException {
-		final CSVReader reader = new CSVReader(new FileReader(file));
-		final String path = file.replace(CSV_FILE, TXT_FILE);
+	public static void readCSVToTXT(final String pFile) throws IOException {
+		final CSVReader reader = new CSVReader(new FileReader(pFile));
+		final String path = pFile.replace(CSV_FILE, TXT_FILE);
 		final File dataFile = new File(path);
 		final FileWriter fw = getFileWriter(dataFile);
 		String[] row;
@@ -39,12 +39,12 @@ public class CSVUtils implements IConstants {
 		fw.close();
 	}
 
-	public static void writeData(final String[] columns, final List<String[]> pData, final String wholeFilePath)
+	public static void writeData(final String[] pColumns, final List<String[]> pData, final String pWholeFilePath)
 			throws IOException {
-		final File file = new File(wholeFilePath);
+		final File file = new File(pWholeFilePath);
 		final FileWriter fw = getFileWriter(file);
 		final CSVWriter writer = new CSVWriter(fw);
-		writer.writeNext(columns);
+		writer.writeNext(pColumns);
 		writer.writeAll(pData);
 		writer.close();
 	}
