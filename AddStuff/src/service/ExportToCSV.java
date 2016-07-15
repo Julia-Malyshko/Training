@@ -1,7 +1,6 @@
 package service;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,6 +18,7 @@ import atg.repository.rql.RqlStatement;
 import util.CSVUtils;
 import util.CommonUtils;
 import util.IConstants;
+import util.Validation;
 
 public class ExportToCSV extends GenericService implements IConstants {
 	private Repository mRepository;
@@ -136,70 +136,6 @@ public class ExportToCSV extends GenericService implements IConstants {
 		vlogInfo("get data success");
 		return data;
 	}
-
-
-
-	protected boolean notInProperties(final List<String> pPropNames) throws RepositoryException {
-		final boolean notInProp;
-		final String[] properties = getItemDescriptor().getPropertyNames();
-		final List<String> propList = Arrays.asList(properties);
-		notInProp = !propList.containsAll(pPropNames);
-		return notInProp;
-	}
-
-	protected boolean validColumns() throws RepositoryException {
-		final boolean valid;
-		final List<String> columns = getColumnNames();
-		if (columns == null || notInProperties(columns)) {
-			valid = false;
-		} else {
-			valid = true;
-		}
-		return valid;
-	}
-	
-/*	//TODO to utils
-	
-//	protected FileWriter getFileWriter(final File pFile) throws IOException {
-//		final FileWriter fw;
-//		fw = new FileWriter(pFile);
-//		return fw;
-//	}
-//
-//	protected void readCSVToTXT(final String filename) throws IOException {
-//		final String filePath = getFilePath() + filename + CSV_FILE;
-//		final CSVReader reader = new CSVReader(new FileReader(filePath));
-//		final String path = getFilePath() + filename + TXT_FILE;
-//		final File readData = new File(path);
-//		final FileWriter fw = getFileWriter(readData);
-//		String[] row;
-//		StringBuffer sb;
-//		while ((row = reader.readNext()) != null) {
-//			sb = new StringBuffer();
-//			for (String element : row) {
-//				sb.append(element + ";\t");
-//			}
-//			sb.append("\n");
-//			fw.write(sb.toString());
-//		}
-//		reader.close();
-//		fw.flush();
-//		fw.close();
-//	}
-//
-//	protected void writeData(final List<String[]> pData, final String filename) throws IOException {
-//		final String path = getFilePath() + filename + CSV_FILE;
-//		final File file = new File(path);
-//		final FileWriter fw = getFileWriter(file);
-//		final CSVWriter writer = new CSVWriter(fw);
-//		writer.writeNext(CommonUtils.getListAsArray(getColumnNames()));
-//		writer.writeAll(pData);
-//		writer.close();
-//		// TODO to check data
-//		readCSVToTXT(filename);
-//
-//	}
-*/	
 	
 	protected String generateFileName(final int startIndex, final int toIndex){
 		final String filename;
@@ -221,7 +157,7 @@ public class ExportToCSV extends GenericService implements IConstants {
 
 
 	protected void writeToCSV() throws Exception {
-		if (validColumns()) {
+		if (Validation.validColumns(getItemDescriptor(), getColumnNames())) {
 			final RepositoryItem[] items = getALLItems();
 			final List<String[]> data = getData(items);
 			final String[] columnNames = CommonUtils.getListAsArray(getColumnNames());
