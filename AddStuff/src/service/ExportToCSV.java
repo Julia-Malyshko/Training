@@ -30,8 +30,8 @@ public class ExportToCSV extends GenericService implements IConstants {
 	private List<String> mColumnNames;
 
 	private String mFilePath;
-	private String mDelimeterCollection;
-	private String mEmptyMapOrCollection;
+	private String mDelimiterCollectionOrMap;
+	private String mEmptyCollectionOrMap;
 
 	/**
 	 * pageSize - number of rows in one csv file
@@ -60,7 +60,7 @@ public class ExportToCSV extends GenericService implements IConstants {
 	protected String getCollectionValues(final Collection<Object> pCollection) {
 		final String collectionValue;
 		if (pCollection.isEmpty()) {
-			collectionValue = getEmptyMapOrCollection();
+			collectionValue = getEmptyCollectionOrMap();
 		} else {
 			final StringBuffer sb = new StringBuffer("[");
 			final Iterator<Object> iter = pCollection.iterator();
@@ -72,9 +72,10 @@ public class ExportToCSV extends GenericService implements IConstants {
 				} else {
 					sb.append(next);
 				}
-				sb.append(getDelimeterCollection());
+				sb.append(getDelimiterCollectionOrMap());
 			}
-			collectionValue = sb.replace(sb.length() - getDelimeterCollection().length(), sb.length(), "]").toString();
+			collectionValue = sb.replace(sb.length() - getDelimiterCollectionOrMap().length(), sb.length(), "]")
+					.toString();
 		}
 		return collectionValue;
 	}
@@ -82,7 +83,7 @@ public class ExportToCSV extends GenericService implements IConstants {
 	protected String getMapValue(final Map<String, Object> pMap) {
 		final String mapValue;
 		if (pMap.isEmpty()) {
-			mapValue = getEmptyMapOrCollection();
+			mapValue = getEmptyCollectionOrMap();
 		} else {
 			final StringBuffer sb = new StringBuffer("[");
 			Object value;
@@ -96,9 +97,9 @@ public class ExportToCSV extends GenericService implements IConstants {
 				} else {
 					sb.append(value);
 				}
-				sb.append(getDelimeterCollection());
+				sb.append(getDelimiterCollectionOrMap());
 			}
-			mapValue = sb.replace(sb.length() - getDelimeterCollection().length(), sb.length(), "]").toString();
+			mapValue = sb.replace(sb.length() - getDelimiterCollectionOrMap().length(), sb.length(), "]").toString();
 		}
 		return mapValue;
 	}
@@ -136,25 +137,24 @@ public class ExportToCSV extends GenericService implements IConstants {
 		vlogInfo("get data success");
 		return data;
 	}
-	
-	protected String generateFileName(final int startIndex, final int toIndex){
+
+	protected String generateFileName(final int startIndex, final int toIndex) {
 		final String filename;
 		filename = getItemDescriptorName() + (startIndex + 1) + "-" + toIndex;
 		return filename;
 	}
-	
-	protected String generateWholeFilePath(final String filename){
+
+	protected String generateWholeFilePath(final String filename) {
 		final String wholePath;
 		wholePath = getFilePath() + filename + CSV_FILE;
 		return wholePath;
 	}
-	
-	protected String getWholeFilePath(final int startIndex, final int toIndex){
+
+	protected String getWholeFilePath(final int startIndex, final int toIndex) {
 		final String filename = generateFileName(startIndex, toIndex);
 		final String wholePath = generateWholeFilePath(filename);
 		return wholePath;
 	}
-
 
 	protected void writeToCSV() throws Exception {
 		if (Validation.validColumns(getItemDescriptor(), getColumnNames())) {
@@ -202,22 +202,6 @@ public class ExportToCSV extends GenericService implements IConstants {
 		mItemDescriptorName = pItemDescriptorName;
 	}
 
-	public final String getDelimeterCollection() {
-		return mDelimeterCollection;
-	}
-
-	public final void setDelimeterCollection(String pDelimeterCollection) {
-		mDelimeterCollection = pDelimeterCollection;
-	}
-
-	public String getEmptyMapOrCollection() {
-		return mEmptyMapOrCollection;
-	}
-
-	public void setEmptyMapOrCollection(String pEmptyMapOrCollection) {
-		mEmptyMapOrCollection = pEmptyMapOrCollection;
-	}
-
 	public String getFilePath() {
 		return mFilePath;
 	}
@@ -240,5 +224,21 @@ public class ExportToCSV extends GenericService implements IConstants {
 
 	public void setColumnNames(List<String> pColumnNames) {
 		mColumnNames = pColumnNames;
+	}
+
+	public final String getDelimiterCollectionOrMap() {
+		return mDelimiterCollectionOrMap;
+	}
+
+	public final void setDelimiterCollectionOrMap(String pDelimiterCollectionOrMap) {
+		mDelimiterCollectionOrMap = pDelimiterCollectionOrMap;
+	}
+
+	public final String getEmptyCollectionOrMap() {
+		return mEmptyCollectionOrMap;
+	}
+
+	public final void setEmptyCollectionOrMap(String pEmptyCollectionOrMap) {
+		mEmptyCollectionOrMap = pEmptyCollectionOrMap;
 	}
 }

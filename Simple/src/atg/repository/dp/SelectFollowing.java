@@ -10,7 +10,6 @@ import java.util.Map;
 import java.util.Set;
 
 import atg.adapter.gsa.GSAItem;
-import atg.core.exception.StackTraceUtils;
 import atg.repository.Query;
 import atg.repository.QueryBuilder;
 import atg.repository.QueryExpression;
@@ -29,16 +28,17 @@ public class SelectFollowing extends DerivationMethodImpl {
 	private static final long serialVersionUID = -8492493838422215917L;
 
 	private static final String SORT_PARAM = "sortProperty";
-	private boolean debug = false;
 
+	@SuppressWarnings("unchecked")
 	@Override
 	public Object derivePropertyValue(final RepositoryItemImpl paramRepositoryItemImpl) throws RepositoryException {
 		final LinkedList<Exception> errors = new LinkedList<Exception>();
-		final List expressions;
+		final List<Object> expressions;
 		Object[] result = null;
 		try {
-			Map attributes = getPropertyDescriptor().getAttributesAsMap();
+			Map<String, Object> attributes = getPropertyDescriptor().getAttributesAsMap();
 			String sortProp = (String) attributes.get(SORT_PARAM);
+			@SuppressWarnings("unused")
 			String foreignRepository = (String) attributes.get("foreignRepositoryPath");
 			// foreignRepositoryName, template.queryable, etc
 			expressions = getDerivation().getExpressionList();
@@ -131,6 +131,7 @@ public class SelectFollowing extends DerivationMethodImpl {
 		return true;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	protected Query createQuery(int paramInt1, boolean paramBoolean1, boolean paramBoolean2,
 			QueryExpression paramQueryExpression1, int paramInt2, boolean paramBoolean3,

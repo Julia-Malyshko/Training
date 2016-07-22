@@ -37,13 +37,8 @@
 			<property name="showList" column-names="show_id,seq_num"
 				data-type="set" component-item-type="show" repository="/custom/Show" />
 		</table>
-
-		<property name="prettyPrintCat" data-type="String">
-			<derivation user-method="atg.repository.dp.PrettyPrint">
-				<expression>catName</expression>
-				<expression>pedigreeNumber</expression>
-			</derivation>
-		</property>
+		<property name="refShow" item-type="show" repository="/custom/Show" ></property>
+		<property name="refCat" item-type="cat"></property>
 	</item-descriptor>
 
 

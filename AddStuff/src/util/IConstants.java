@@ -19,4 +19,20 @@ public interface IConstants {
 	static final String CSV_FILE = ".csv";
 	static final String TXT_FILE = ".txt";
 	static final String NEW_LINE = "\n";
+	
+	static final String PROPERTY_VALUE = "propertyValue";
+	static final String COLLECTION_DELIMITER = "collectionDelimiter";
+	static final String REPOSITORY_ITEM = "repositoryItem";
+	//for Import map attributes
+	static final String PROPERTY_TYPE = "propertyType"; // all have
+	//if repository item
+	static final String PROPERTY_REPOSITORY_PATH = "propertyRepositoryPath";
+	static final String PROPERTY_ITEM_DESCRIPTOR = "propertyItemDescriptor";
+	//if map or collection -> not null
+	static final String COMPONENT_TYPE = "componentType"; // all have
+	//if repository item
+	static final String COMPONENT_REPOSITORY_PATH = "componentRepositoryPath";
+	static final String COMPONENT_ITEM_DESCRIPTOR = "componentItemDescriptor";
+	static final String COMPONENT_DELIMITER = "componentDelimiter";
+	static final String EMPTY_COLLECTION_OR_MAP = "emptyCollectionOrMap";
 }

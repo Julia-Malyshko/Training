@@ -123,7 +123,7 @@ public class AddStuff extends GenericService implements IConstants {
 		for (final RepositoryItem sku : pProductSKUs) {
 			if (RandomUtils.random.nextDouble() > PROBABILITY_ADD_SKU) {
 				skuId = sku.getRepositoryId();
-				quantity = RandomUtils.randomUniform(getMaxQuantity(), getMinQuantity());
+				quantity = RandomUtils.randomUniform(getMinQuantity(), getMaxQuantity());
 				commerceSKU = getCommerceItemManager().createCommerceItem(skuId, pProductId, quantity);
 				commerceItems.add(commerceSKU);
 			}
@@ -237,7 +237,7 @@ public class AddStuff extends GenericService implements IConstants {
 			final RepositoryItem[] myUsers = getMyUsers();
 			final List<String> myUserIds = getIds(myUsers);
 			for (final String userId : myUserIds) {
-				numOrders = RandomUtils.randomUniform(getOrdersCount(), getOrdersOffset());
+				numOrders = RandomUtils.randomUniform(getOrdersOffset(), getOrdersCount());
 				for (int i = 0; i < numOrders; i++) {
 					createRandomOrder(userId);
 				}
